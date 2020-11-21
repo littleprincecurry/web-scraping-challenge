@@ -49,9 +49,12 @@ def scrape():
     browser.visit(url)
 
     tables = pd.read_html(url)
+    df = tables[0]
+    df.columns = ['mars', 'facts']
+    df.set_index('mars', inplace=True)
 
-    table_html = tables[0].to_html()
-    table_html = table_html.replace('\n', '')
+    table_html = df.to_html()
+    # table_html = table_html.replace('\n', '')
 
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url)
@@ -76,6 +79,7 @@ def scrape():
             'url': img_url
         }
         x.append(new_dict)
+    x = [i for n, i in enumerate(x) if i not in x[n + 1:]]
 
     mars_scrape = {
         'news_headline': news_headline,
