@@ -32,15 +32,20 @@
         </div>
     </div>
 
-    {%for hemi in mars.list_dict%}
+
     <div class='row'>
-        <div class='col-6'>
-            <img src='{{hemi.url}}' class='img-fluid' />
-            <h3>{{hemi.title}}</h3>
+        <div class='col-12'>
+            <h1>Mars Hemispheres</h1>
         </div>
+        {%for hemi in mars.list_dict%}
+        <div class='col-6'>
+            <h3>{{hemi.title}}</h3>
+            <img src='{{hemi.url}}' class='img-fluid' />
+        </div>
+        {%endfor%}
     </div>
 
-    {%endfor%}
+
 
 
 

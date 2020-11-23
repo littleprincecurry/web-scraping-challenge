@@ -6,10 +6,14 @@ from urllib.parse import urljoin
 import pandas as pd
 import time
 
+# create function to open chromedriver
+
 
 def init_browser():
     executable_path = {'executable_path': 'chromedriver.exe'}
     return Browser('chrome', **executable_path, headless=False)
+
+# function to scrape websites
 
 
 def scrape():
